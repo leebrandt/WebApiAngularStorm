@@ -11,44 +11,45 @@
         function(results){
           vm.todos = results.data;
         },
-        function(err){
-          console.error(err);
-        });
+        errorHandler);
     };
 
     vm.addTodo = function(){
-      TodoService.Save(vm.newTodo).then(
-        function(result){
-          vm.todos.push(result.data);
-          vm.newTodo = { }
-        },
-        function(err){
-          console.error(err);
-        })
+      if(newTodo.description){
+        TodoService.Save(vm.newTodo).then(
+          function(result){
+            vm.todos.push(result.data);
+            vm.newTodo = { }
+          },
+          errorHandler)
+      }
     };
 
     vm.markComplete = function(todo){
-      TodoService.Save(todo).then(
-        function(result){ 
-          // do nothing 
-        },
-        function(err){
-          console.error(err);
-        })
+      if(todo){
+        TodoService.Save(todo).then(
+          function(result){ 
+            // do nothing 
+          },
+          errorHandler)
+      }
     };
 
     vm.deleteTodo = function(todo){
-      TodoService.Delete(todo.id).then(
-        function(result){
-          vm.todos.splice(vm.todos.indexOf(todo), 1);
-        },
-        function(err){
-          console.error(err);
-        }
-      )
+      if(todo){
+        TodoService.Delete(todo.id).then(
+          function(result){
+            vm.todos.splice(vm.todos.indexOf(todo), 1);
+          },
+          errorHandler)
+      }
     };
 
     return vm;
+  }
+
+  function errorHandler(error){
+    console.error(error);
   }
 
   angular.module('ToDoApp')

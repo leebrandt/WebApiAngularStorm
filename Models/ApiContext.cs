@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using WebApiAngularStorm.Models;
 
-namespace WebApiAngularStorm.Services
+namespace WebApiAngularStorm.Models
 {
   public class ApiContext : DbContext
   {
