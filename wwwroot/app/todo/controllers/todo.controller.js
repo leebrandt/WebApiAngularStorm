@@ -3,7 +3,6 @@
   
   function todoController(TodoService){
     var vm = this;
-
     vm.title = "To Do";
 
     vm.loadTodos = function(){
@@ -15,7 +14,7 @@
     };
 
     vm.addTodo = function(){
-      if(newTodo.description){
+      if(vm.newTodo.description){
         TodoService.Save(vm.newTodo).then(
           function(result){
             vm.todos.push(result.data);
