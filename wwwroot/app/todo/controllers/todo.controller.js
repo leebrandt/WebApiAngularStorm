@@ -12,6 +12,7 @@
         },
         errorHandler);
     };
+    
 
     vm.addTodo = function(){
       if(vm.newTodo.description){
