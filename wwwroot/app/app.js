@@ -17,7 +17,10 @@
       })
       .state('todo', {
         url: '/todo',
-        templateUrl: '/app/todo/views/todo.view.html'
+        templateUrl: '/app/todo/views/todo.view.html',
+        sp: {
+          authenticate: true
+        }
       });
 
     $urlRouterProvider.otherwise('/');
