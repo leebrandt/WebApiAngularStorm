@@ -3,7 +3,7 @@
   
   function todoController(TodoService){
     var vm = this;
-    vm.title = "To Do";
+    vm.title = "My To Do";
 
     vm.loadTodos = function(){
       TodoService.Get().then(
