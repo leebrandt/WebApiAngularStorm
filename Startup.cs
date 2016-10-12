@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Stormpath.AspNetCore;
 using WebApiAngularStorm.Models;
 
 namespace WebApiAngularStorm
@@ -27,6 +28,7 @@ namespace WebApiAngularStorm
         {
             services.AddDbContext<ApiContext>(opt => opt.UseInMemoryDatabase());
 
+            services.AddStormpath();
             // Add framework services.
             services.AddMvc();
         }
@@ -39,9 +41,12 @@ namespace WebApiAngularStorm
             
             //var context = app.ApplicationServices.GetService<ApiContext>();
             //SeedDatabase(context);
-
+            
             app.UseDefaultFiles(); // serves up our wwwroot files
             app.UseStaticFiles(); // allows serving of static files
+
+            app.UseStormpath();
+            
             app.UseMvc(); // sets MVC routes for webapi
         }
 

@@ -13,7 +13,6 @@
         errorHandler);
     };
     
-
     vm.addTodo = function(){
       if(vm.newTodo.description){
         TodoService.Save(vm.newTodo).then(
